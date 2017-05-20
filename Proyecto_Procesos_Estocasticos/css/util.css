@@ -1,0 +1,24 @@
+table tr td input{
+	min-height: 1px;
+	position: relative;   
+    width: 100%;
+}
+
+table{
+	min-height: 1px;
+	position: relative;    
+    width: 100%;
+}
+
+.fake-div-white{
+	height:55vh;
+	background-color: white;
+}
+
+.pull-down{
+	vertical-align: bottom;
+}
+
+.fake-label{
+	color: rgba(0, 0, 0, 0);
+}

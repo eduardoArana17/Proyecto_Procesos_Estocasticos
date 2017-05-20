@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Equipo 12pm. Proyecto Final</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Util CSS -->
+    <link href="css/util.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/sb-admin.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="css/plugins/morris.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Message box library css-->    
+    <link href="css/msgBoxLight.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Equipo 12pm</a>
+            </div>
+            <!-- Top Menu Items -->            
+            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav">
+                    <li class="active">
+                        <a href="index.html"><i class="fa fa-fw fa-table"></i> Datos</a>
+                    </li>
+                    <li>
+                        <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
+                    </li>
+                    <li>
+                        <a href="tables.html"><i class="fa fa-fw fa-table"></i> Tables</a>
+                    </li>
+                    <li>
+                        <a href="forms.html"><i class="fa fa-fw fa-edit"></i> Forms</a>
+                    </li>
+                    <li>
+                        <a href="bootstrap-elements.html"><i class="fa fa-fw fa-desktop"></i> Bootstrap Elements</a>
+                    </li>
+                    <li>
+                        <a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Dropdown <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="demo" class="collapse">
+                            <li>
+                                <a href="#">Dropdown Item</a>
+                            </li>
+                            <li>
+                                <a href="#">Dropdown Item</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="blank-page.html"><i class="fa fa-fw fa-file"></i> Blank Page</a>
+                    </li>
+                    <li>
+                        <a href="index-rtl.html"><i class="fa fa-fw fa-dashboard"></i> RTL Dashboard</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </nav>
+
+        <div id="page-wrapper">
+
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            Datos <small>Ingreso inicial.</small>
+                        </h1>
+                        <form class="breadcrumb" id="formData">
+                            <div class="row">
+                                <div class="form-group col-sm-6">
+                                    <label>Tamaño de la matríz</label>
+                                    <select class="form-control" id="cmbMatrixSize">
+                                        <option value="">Seleccione...</option>
+                                        <option value="2">2x2</option>
+                                        <option value="3">3x3</option>
+                                        <option value="4">4x4</option>
+                                        <option value="5">5x5</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div id="divData" hidden>
+                                <div class="row">
+                                    <div class="form-group col-sm-6">
+                                        <label>Matríz</label>
+                                        <table id="matrix">
+                                            
+                                        </table>
+                                    </div>
+                                    <div class="form-group col-sm-6">
+                                        <label>Política</label>
+                                        <table id="policy">
+                                            
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-sm-4">                                    
+                                        <label>¿Cuántos estados se requieren?</label>
+                                        <input type='number' class="form-control" id="stateNumber" name="stateNumber" min="0" />
+                                    </div>
+                                    <div class="form-group col-sm-2">    
+                                        <label class="fake-label">.</label>                                     
+                                        <button type="button" id="btnState" class="btn btn-info form-control">Ingresar costos</button>
+                                    </div>
+                                </div>                                                            
+                                <div class="row">
+                                    <div class="form-group col-sm-6" id="states" hidden>                        
+                                    </div>                                    
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-sm-6">                                    
+                                        <button type="button" class="btn btn-primary" onclick="save();">Guardar</button>
+                                        <button type="button" class="btn btn-warning" onclick="clean();">Limpiar</button>   
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- /.row -->                                    
+
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- /#page-wrapper -->
+
+        <div class="fake-div-white">
+            
+        </div>
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- index js -->
+    <script src="js/index.js"></script>
+
+    <!-- messagebox library js -->    
+    <script src="js/jquery.msgBox.js"></script>
+
+    <!-- serializeObject js -->
+    <script src="js/jquery.serializeObject.js"></script>
+
+</body>
+
+</html>
