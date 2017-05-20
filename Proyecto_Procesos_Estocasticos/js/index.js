@@ -80,6 +80,7 @@ function save(){
     }
     else{
         var formObj = $('#formData').serializeObject();
+        formObj.size = $("#cmbMatrixSize").val();
         localStorage['formObj'] = JSON.stringify(formObj);
 
         $.msgBox({
