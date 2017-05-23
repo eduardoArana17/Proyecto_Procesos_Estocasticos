@@ -19,6 +19,14 @@ table{
 	vertical-align: bottom;
 }
 
+.pull-right{
+	float: right;
+}
+
+.no-padding{
+	padding: 0px;
+}
+
 .fake-label{
 	color: rgba(0, 0, 0, 0);
 }
