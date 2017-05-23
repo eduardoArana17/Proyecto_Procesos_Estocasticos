@@ -105,43 +105,37 @@
                             Datos <small>Ingreso inicial.</small>
                         </h1>
                         <form class="breadcrumb" id="formData">
-                            <div class="row">
-                                <div class="form-group col-sm-6">
-                                    <label>Tamaño de la matríz</label>
-                                    <select class="form-control" id="cmbMatrixSize">
-                                        <option value="">Seleccione...</option>
-                                        <option value="2">2x2</option>
-                                        <option value="3">3x3</option>
-                                        <option value="4">4x4</option>
-                                        <option value="5">5x5</option>
-                                    </select>
-                                </div>
-                            </div>
+                            <div class="row">                                
+                                <div class="form-group col-sm-6">                                    
+                                    <label>¿Cuántos estados se requieren?</label>
+                                    <input type='number' class="form-control" id="stateNumber" name="stateNumber" min="0" />      
+                                    <br>
+                                    <div class="col-sm-4 no-padding">                                    
+                                        <button type="button" id="btnState" class="btn btn-info form-control">Ingresar costos</button>
+                                    </div>                                                                  
+                                </div>                                
+                                <div class="form-group col-sm-6">                                    
+                                    <label>¿Cuántas decisiones?</label>
+                                    <input type='number' class="form-control" id="decisionNumber" name="decisionNumber" min="0" />                                    
+                                </div>                                
+                            </div>                                   
                             <div id="divData" hidden>
                                 <div class="row">
+                                    <div class="form-group col-sm-6" id="costs" hidden>                        
+                                    </div>    
                                     <div class="form-group col-sm-6">
                                         <label>Matríz</label>
                                         <table id="matrix">
                                             
                                         </table>
-                                    </div>
-                                    <div class="form-group col-sm-6">
-                                        <label>Política</label>
-                                        <table id="policy">
-                                            
-                                        </table>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="form-group col-sm-6" id="states" hidden>                        
-                                    </div>                                    
-                                </div>
-                                <div class="row">
-                                    <div class="form-group col-sm-6">                                    
-                                        <button type="button" class="btn btn-primary" onclick="save();">Guardar</button>
-                                        <button type="button" class="btn btn-warning" onclick="clean();">Limpiar</button>   
-                                    </div>
-                                </div>
+                                        <br>
+                                        <br>
+                                        <div class="form-object pull-right">                                    
+                                            <button type="button" class="btn btn-primary" onclick="save();">Guardar</button>
+                                            <button type="button" class="btn btn-warning" onclick="clean();">Limpiar</button>   
+                                        </div>  
+                                    </div>                                                                
+                                </div>                                                            
                             </div>
                         </form>
                     </div>
