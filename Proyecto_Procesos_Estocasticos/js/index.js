@@ -40,7 +40,7 @@ function createMatrix(size){
     for (var i = 0; i < size; i++) { 
         tableHtml += "<tr>";                   
         for (var j = 0; j < size; j++) {                    
-            tableHtml += "<td><input type='number' id='matrix" + i +  j + "'' value=''/> </td>";
+            tableHtml += "<td><input type='number' id='matrix" + i +  j + "'' min='0'/> </td>";
         }
         tableHtml += "</tr>";   
     }
@@ -53,7 +53,7 @@ function createPolicy(size){
     var tableHtml = "";   
     tableHtml += "<tr>";                     
     for (var i = 0; i < size; i++) {                    
-        tableHtml += "<td><input type='number' id='policy" + i + "'' value=''/></td>";
+        tableHtml += "<td><input type='number' id='policy" + i + "'' min='0'/></td>";
     }    
     tableHtml += "</tr>";
     $("#policy").html(tableHtml);
@@ -71,23 +71,32 @@ function save(){
     var error = 0;
     $('#formData :input:not(:button)').each(function ()
     {        
-        if ($.trim(this.value) == "")
+        if ($.trim(this.value) == "" || Number(this.value) < 0)
             error++;
     });
     if (error > 0){
         $.msgBox({
             title:"Error.",
-            content:"Favor de llenar todos los datos. Hay un total de " + error + " campo(s) vacío(s)."
+            content:"Favor de llenar todos los datos. Hay un total de " + error + " campo(s) vacío(s) o negativos."
         });
-    }
-    else{
+    }    
+    else{        
         var formObj = $('#formData').serializeObject();                				    
         formObj.size = formObj.stateNumber;
         
-        formObj.MatrixArray = [];
+        formObj.MatrixArray = [];        
         for ( var i = 0; i < formObj.stateNumber; i++ ) {       
+            var validation = 0;
             for ( var j = 0; j < formObj.stateNumber; j++ ) {          
                 formObj.MatrixArray.push($("#matrix" + i + j).val());
+                validation += Number($("#matrix" + i + j).val());
+            }
+            if(!(1 - validation >= 0 && 1 - validation < 0.01)){
+                $.msgBox({
+                    title:"Error.",
+                    content:"La matríz no es una matríz markoviana."
+                });
+                return false;
             }             
         }		  
 				
