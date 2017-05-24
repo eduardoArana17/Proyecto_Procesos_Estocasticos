@@ -15,7 +15,8 @@ $(document).ready(function() {
 
         $("#divData").show();
         showCosts(sizeState, sizeDecision);   
-        createMatrix(sizeState);        
+        createMatrix(sizeState);      
+        createPolicy(sizeState);   
     });
 });
 
@@ -44,7 +45,19 @@ function createMatrix(size){
         tableHtml += "</tr>";   
     }
     $("#matrix").html(tableHtml);
-}     
+}  
+
+function createPolicy(size){ 
+    console.log(size);    
+    $("#policy").html("");   
+    var tableHtml = "";   
+    tableHtml += "<tr>";                     
+    for (var i = 0; i < size; i++) {                    
+        tableHtml += "<td><input type='number' id='policy" + i + "'' value=''/></td>";
+    }    
+    tableHtml += "</tr>";
+    $("#policy").html(tableHtml);
+}      
 
 function clean(){
     $("#divData").hide();    
@@ -68,25 +81,27 @@ function save(){
         });
     }
     else{
-        var formObj = $('#formData').serializeObject();        
+        var formObj = $('#formData').serializeObject();                				    
         formObj.size = formObj.stateNumber;
-		console.log(formObj);		
-		        
-		formObj.MatrixArray = [];	        
-		for(var i = 0; i < formObj.size; i++){			
-			for(var j = 0; j < formObj.size; j++){								
-				formObj.MatrixArray.push($("#matrix"+ i + j).val());							                
-			}			
-		}						
-		        
-		formObj.CostArray = [];		
-		for(var i = 0; i < formObj.stateNumber; i++){            
-            for(var j = 0; j < formObj.decisionNumber; j++){    
-                console.log("#cost" + (i + 1) + (j + 1));
-                console.log($("#cost"+ (i + 1) + (j + 1)).val());                          
-                formObj.CostArray.push($("#cost"+ (i + 1) + (j + 1)).val());                                  
-            }           
-        }   
+        
+        formObj.MatrixArray = [];
+        for ( var i = 0; i < formObj.stateNumber; i++ ) {       
+            for ( var j = 0; j < formObj.stateNumber; j++ ) {          
+                formObj.MatrixArray.push($("#matrix" + i + j).val());
+            }             
+        }		  
+				
+        formObj.CostArray = [];
+		for(var i = 0; i < formObj.stateNumber; i++){    
+            for(var j = 0; j < formObj.decisionNumber; j++){                                
+                formObj.CostArray.push($("#cost"+ (i + 1) + (j + 1)).val());                                              
+            }   
+        }
+
+        formObj.PolicyArray = [];        
+        for(var i = 0; i < formObj.stateNumber; i++){                                
+            formObj.PolicyArray.push($("#policy"+ i).val());                                              
+        }           
 				
         localStorage['formObj'] = JSON.stringify(formObj);
 
